@@ -6,14 +6,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppsInfoActivity extends AppCompatActivity {
+public class AppsInfoActivity extends BasicActivity {
 
     public static void actionStart(Context context){
         Intent intent = new Intent(context, AppsInfoActivity.class);
