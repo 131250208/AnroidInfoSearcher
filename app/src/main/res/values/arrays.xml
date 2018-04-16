@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statusNames">
+        <item>设备编号: </item>
+        <item>系统平台版本 :</item>
+        <item>网络运营商代号 :</item>
+        <item>网络运营商名称 :</item>
+        <item>手机网络类型 :</item>
+        <item>设备所在位置 :</item>
+        <item>SIM卡国别:</item>
+        <item>SIM卡序列号 :</item>
+        <item>SIM卡状态: </item>
+        <item>手机IMSI: </item>
+    </string-array>
+    <string-array name="phoneType">
+        <item>NONE</item>
+        <item>GSM</item>
+        <item>CDMA</item>
+        <item>SIP</item>
+    </string-array>
+    <string-array name="simState">
+        <item>Unknown</item>
+        <item>NO SIM</item>
+        <item>Locked:requires the user\'s SIM PIN to unlock</item>
+        <item>Locked:requires the user\'s SIM PUK to unlock</item>
+        <item>Locked:requries a network PIN to unlock</item>
+        <item>Ready</item>
+    </string-array>
+</resources>

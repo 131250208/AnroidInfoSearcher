@@ -4,4 +4,17 @@
     <string name="system_info">系统信息</string>
     <string name="apps_info">应用信息</string>
     <string name="users_info">用户信息</string>
+    <string name="ram_info">RAM信息</string>
+    <string name="rom_info">ROM信息</string>
+    <string name="SD_info">SD信息</string>
+    <string name="language_info">语言信息</string>
+    <string name="network_info">网络信息</string>
+    <string name="ip_mac_info">IP_MAC信息</string>
+    <string name="wifi_info">WIFI信息</string>
+    <string name="telephony_info">SIM卡及网络信息</string>
+    <string name="linux_kerbel_info">linux内核版本信息</string>
+    <string name="wifiHot_info">wifi热点信息</string>
+    <string name="hard_info">android手机硬件信息</string>
+    <string name="sensor_info">传感器信息</string>
+    <string name="process_info">进程信息</string>
 </resources>

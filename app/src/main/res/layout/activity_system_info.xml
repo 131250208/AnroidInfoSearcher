@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SystemInfoActivity">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/button_getRAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ram_info"/>
+    <Button
+        android:id="@+id/button_getROM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rom_info"/>
+    <Button
+        android:id="@+id/button_getSD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SD_info"/>
+    <Button
+        android:id="@+id/button_getLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/language_info"/>
+    <Button
+        android:id="@+id/button_getNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/network_info"/>
+    <Button
+        android:id="@+id/button_getIP_MAC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ip_mac_info"/>
+    <Button
+        android:id="@+id/button_getWIFI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_info"/>
+    <Button
+        android:id="@+id/button_getTelephony"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/telephony_info"/>
+    <Button
+        android:id="@+id/button_getLinuxKernelVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/linux_kerbel_info"/>
+    <Button
+        android:id="@+id/button_getWifiHot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifiHot_info"/>
+    <Button
+        android:id="@+id/button_getHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hard_info"/>
+    <Button
+        android:id="@+id/button_getSensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sensor_info"/>
+    <Button
+        android:id="@+id/button_getProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/process_info"/>
+
+
+</LinearLayout>
