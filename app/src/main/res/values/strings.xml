@@ -12,9 +12,8 @@
     <string name="ip_mac_info">IP_MAC信息</string>
     <string name="wifi_info">WIFI信息</string>
     <string name="telephony_info">SIM卡及网络信息</string>
-    <string name="linux_kerbel_info">linux内核版本信息</string>
+    <string name="linux_kerbel_info">系统版本信息</string>
     <string name="wifiHot_info">wifi热点信息</string>
-    <string name="hard_info">android手机硬件信息</string>
     <string name="sensor_info">传感器信息</string>
     <string name="process_info">进程信息</string>
 </resources>

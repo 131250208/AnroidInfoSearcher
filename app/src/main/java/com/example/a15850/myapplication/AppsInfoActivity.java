@@ -44,6 +44,8 @@ public class AppsInfoActivity extends BasicActivity {
             String[] permissions = pkgInfo.requestedPermissions;
             int versionCode = pkgInfo.versionCode;
 
+
+
             App app = new App(appLabel, appIcon, pkgName, versionName);
             apps.add(app);
 

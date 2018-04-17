@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.Environment;
@@ -87,9 +88,6 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
         //获取wifi热点信息
         getWifiHot = (Button) findViewById(R.id.button_getWifiHot);
         getWifiHot.setOnClickListener(this);
-        //获取硬件信息
-        getHard = (Button) findViewById(R.id.button_getHard);
-        getHard.setOnClickListener(this);
         //获取传感器信息
         getSensor = (Button) findViewById(R.id.button_getSensor);
         getSensor.setOnClickListener(this);
@@ -104,7 +102,6 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            //获取内存信息
             case R.id.button_getRAM:
                 getMemoryInfo();
                 break;
@@ -134,9 +131,6 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
                 break;
             case R.id.button_getWifiHot:
                 getWifiHotInfo();
-                break;
-            case R.id.button_getHard:
-                getHardInfo();
                 break;
             case R.id.button_getSensor:
                 getSensorInfo();
@@ -410,10 +404,10 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
     //linux内核版本
     public void getLinuxKernelVersionInfo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SystemInfoActivity.this);
-        builder.setTitle("linux内核版本");
-        String r = "";
+        builder.setTitle("系统版本");
+        String r = Build.VERSION.RELEASE;
 
-        builder.setMessage("linux内核版本：" + r);
+        builder.setMessage("系统版本：" + r);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -458,11 +452,6 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
         });
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    //硬件信息
-    public void getHardInfo() {
-
     }
 
     //传感器信息

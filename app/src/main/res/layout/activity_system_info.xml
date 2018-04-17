@@ -55,11 +55,6 @@
         android:layout_height="wrap_content"
         android:text="@string/wifiHot_info"/>
     <Button
-        android:id="@+id/button_getHard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hard_info"/>
-    <Button
         android:id="@+id/button_getSensor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
