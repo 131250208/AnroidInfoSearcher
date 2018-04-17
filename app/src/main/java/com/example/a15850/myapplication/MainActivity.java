@@ -2,7 +2,10 @@ package com.example.a15850.myapplication;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
@@ -13,7 +16,9 @@ import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends BasicActivity {
@@ -22,7 +27,9 @@ public class MainActivity extends BasicActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ArrayList<App> apps_info = get_data();
+        DataContainer dc = (DataContainer)getApplication();
+        dc.setApps(apps_info);
 
         Button bt_sys_info = (Button)findViewById(R.id.button_system_info);
         bt_sys_info.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +52,6 @@ public class MainActivity extends BasicActivity {
         bt_usr_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,Build.VERSION.RELEASE, Toast.LENGTH_SHORT).show();
-                sendBroadcast(new Intent("android.provider.Telephony.SECRET_CODE", Uri.parse("android_secret_code://4636")));
 //                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {//Android 6.0以上版本需要获取权限
 //                    String[] perms = {Manifest.permission.CALL_PHONE,};
 //                    requestPermissions(perms,200);//请求权限
@@ -56,32 +61,37 @@ public class MainActivity extends BasicActivity {
             }
         });
 
-//        PackageManager mPm = getPackageManager();
-//        List<PackageInfo> appList=mPm.getInstalledPackages(PackageManager.GET_PERMISSIONS|PackageManager.GET_RECEIVERS|
-//                PackageManager.GET_SERVICES|PackageManager.GET_PROVIDERS);
-//
-//        for (PackageInfo pi : appList) {
-//            System.out.println("Process Name: "+pi);
-//            // Do not add System Packages
-//            if ((pi.requestedPermissions == null || pi.packageName.equals("android")) ||
-//                    (pi.applicationInfo != null && (pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0))
-//                continue;
-//
-//            for (String permission : pi.requestedPermissions) {
-//                //Map<String, String> curChildMap = new HashMap<String, String>();
-//                //System.out.println("############     "+permission);
-//
-//                try {
-//                    PermissionInfo pinfo = mPm.getPermissionInfo(permission, PackageManager.GET_META_DATA);
-//                    CharSequence label = pinfo.loadLabel(mPm);
-//                    CharSequence desc = pinfo.loadDescription(mPm);
-//                    System.out.println("$$$$$ "+label+"!!!!!! "+desc);
-//
-//                } catch (NameNotFoundException e) {
-//                    Log.i("", "Ignoring unknown permission " + permission);
-//                    continue;
-//                }
-//            }
+    }
+
+    private ArrayList<App> get_data(){
+        ArrayList<App> apps = new ArrayList<App>();
+
+        PackageManager pm = this.getPackageManager();
+
+        List<PackageInfo> packageInfos = pm.getInstalledPackages(0);
+        for(PackageInfo pkgInfo: packageInfos){
+            String appLabel = (String) pkgInfo.applicationInfo.loadLabel(pm);
+            Drawable appIcon = pkgInfo.applicationInfo.loadIcon(pm);
+            String pkgName = pkgInfo.packageName; // 获得应用程序的包名
+            String versionName = pkgInfo.versionName;
+//            String backupAgentName = pkgInfo.applicationInfo.backupAgentName;
+//            String[] permissions = pkgInfo.requestedPermissions;
+            int versionCode = pkgInfo.versionCode;
+            String type = "第三方应用";
+            int flags = pkgInfo.applicationInfo.flags;
+            if((ApplicationInfo.FLAG_UPDATED_SYSTEM_APP&flags) == ApplicationInfo.FLAG_UPDATED_SYSTEM_APP){
+                type = "更新过的系统应用";
+            }else if((ApplicationInfo.FLAG_SYSTEM&flags) == ApplicationInfo.FLAG_SYSTEM) {
+                type = "原生系统应用";
+            }
+
+            App app = new App(appLabel, appIcon, pkgName, versionName, type, versionCode);
+            apps.add(app);
+
+            Log.i("MainActivity", String.format("onCreate: appLabel: %s, pkgName: %s, versionName: %s, versionCode: %d", appLabel, pkgName, versionName, versionCode));
+        }
+
+        return apps;
     }
 
     @Override

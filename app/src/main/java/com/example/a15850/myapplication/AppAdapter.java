@@ -35,6 +35,8 @@ public class AppAdapter extends ArrayAdapter<App> {
             viewHolder.setPkgName((TextView)view.findViewById(R.id.pkgName));
             viewHolder.setVersionName((TextView)view.findViewById(R.id.versionName));
             viewHolder.setAppIcon((ImageView)view.findViewById(R.id.app_icon));
+            viewHolder.setType((TextView)view.findViewById(R.id.type));
+            viewHolder.setVersionCode((TextView)view.findViewById(R.id.versionCode));
             view.setTag(viewHolder);
         }else {
             view = convertView;
@@ -44,7 +46,9 @@ public class AppAdapter extends ArrayAdapter<App> {
         viewHolder.getAppIcon().setImageDrawable(app.getAppIcon());
         viewHolder.getAppLabel().setText(String.format("Label: %s", app.getAppLabel()));
         viewHolder.getPkgName().setText(String.format("PkgName: %s", app.getPkgName()));
-        viewHolder.getVersionName().setText(String.format("Version: %s", app.getVersionName()));
+        viewHolder.getVersionName().setText(String.format("VersionName: %s", app.getVersionName()));
+        viewHolder.getType().setText(app.getType());
+        viewHolder.getVersionCode().setText(String.format("VersionCode: %d", app.getVersionCode()));
 
         return view;
     }
@@ -54,6 +58,24 @@ public class AppAdapter extends ArrayAdapter<App> {
         private TextView pkgName;
         private TextView versionName;
         private ImageView appIcon;
+        private TextView type;
+        private TextView versionCode;
+
+        public TextView getType() {
+            return type;
+        }
+
+        public void setType(TextView type) {
+            this.type = type;
+        }
+
+        public TextView getVersionCode() {
+            return versionCode;
+        }
+
+        public void setVersionCode(TextView versionCode) {
+            this.versionCode = versionCode;
+        }
 
         public ImageView getAppIcon() {
             return appIcon;

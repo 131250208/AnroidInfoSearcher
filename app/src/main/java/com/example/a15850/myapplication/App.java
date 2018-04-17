@@ -2,24 +2,48 @@ package com.example.a15850.myapplication;
 
 import android.graphics.drawable.Drawable;
 
-public class App {
+public class App{
     private Drawable appIcon;
     private String appLabel;
     private String pkgName;
     private String versionName;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(int versionCode) {
+        this.versionCode = versionCode;
+    }
+
+    private int versionCode;
+
+    public App(){
+
+    }
+    public App(String appLabel, Drawable appIcon, String pkgName, String versionName, String type, int versionCode){
+        this.appLabel = appLabel;
+        this.pkgName = pkgName;
+        this.versionName = versionName;
+        this.appIcon = appIcon;
+        this.type = type;
+        this.versionCode = versionCode;
+    }
 
     public Drawable getAppIcon() {
         return appIcon;
     }
 
     public void setAppIcon(Drawable appIcon) {
-        this.appIcon = appIcon;
-    }
-
-    public App(String appLabel, Drawable appIcon, String pkgName, String versionName){
-        this.appLabel = appLabel;
-        this.pkgName = pkgName;
-        this.versionName = versionName;
         this.appIcon = appIcon;
     }
 
@@ -45,4 +69,5 @@ public class App {
     public void setVersionName(String versionName) {
         this.versionName = versionName;
     }
+
 }

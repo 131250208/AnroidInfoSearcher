@@ -21,6 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:id="@+id/type"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:id="@+id/appLabel"/>
         <TextView
             android:layout_width="match_parent"
@@ -32,6 +37,11 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:id="@+id/versionName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/versionCode"/>
     </LinearLayout>
 
 </LinearLayout>
