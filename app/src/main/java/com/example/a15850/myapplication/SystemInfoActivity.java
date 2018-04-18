@@ -43,7 +43,7 @@ import java.util.Locale;
 
 public class SystemInfoActivity extends BasicActivity implements View.OnClickListener {
     private Button getRAM, getROM, getSD, getLanguage, getNetwork, getIP_MAC, getWifi;
-    private Button getTelephony, getLinuxKernelVersion, getWifiHot, getHard, getSensor;
+    private Button getTelephony, getSysVersion, getWifiHot, getHard, getSensor;
     private Button getProcess;
     private static Context con;
 
@@ -82,9 +82,9 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
         //获取SIM卡及网络信息
         getTelephony = (Button) findViewById(R.id.button_getTelephony);
         getTelephony.setOnClickListener(this);
-        //获取linxu内核版本信息
-        getLinuxKernelVersion = (Button) findViewById(R.id.button_getLinuxKernelVersion);
-        getLinuxKernelVersion.setOnClickListener(this);
+        //获取系统版本信息
+        getSysVersion = (Button) findViewById(R.id.button_getSysVersion);
+        getSysVersion.setOnClickListener(this);
         //获取wifi热点信息
         getWifiHot = (Button) findViewById(R.id.button_getWifiHot);
         getWifiHot.setOnClickListener(this);
@@ -126,8 +126,8 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
             case R.id.button_getTelephony:
                 getTelephonyInfo();
                 break;
-            case R.id.button_getLinuxKernelVersion:
-                getLinuxKernelVersionInfo();
+            case R.id.button_getSysVersion:
+                getSysVersionInfo();
                 break;
             case R.id.button_getWifiHot:
                 getWifiHotInfo();
@@ -402,7 +402,7 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
     }
 
     //linux内核版本
-    public void getLinuxKernelVersionInfo() {
+    public void getSysVersionInfo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SystemInfoActivity.this);
         builder.setTitle("系统版本");
         String r = Build.VERSION.RELEASE;

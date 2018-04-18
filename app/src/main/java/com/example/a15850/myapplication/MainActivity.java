@@ -1,10 +1,14 @@
 package com.example.a15850.myapplication;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Binder;
@@ -48,19 +52,75 @@ public class MainActivity extends BasicActivity {
         });
 
 
-        Button bt_usr_info = (Button)findViewById(R.id.button_users_info);
+        Button bt_usr_info = (Button)findViewById(R.id.button_cve_info);
         bt_usr_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {//Android 6.0以上版本需要获取权限
-//                    String[] perms = {Manifest.permission.CALL_PHONE,};
-//                    requestPermissions(perms,200);//请求权限
-//                } else {
-//                    callPhone();
-//                }
+                showCVE(find_cves());
             }
         });
 
+    }
+    private ArrayList<CVE> find_cves(){
+        ArrayList<CVE> cves = new ArrayList<CVE>();
+        DataContainer dc = (DataContainer)getApplication();
+        ArrayList<App> apps = dc.getApps();
+        String sysVersion = Build.VERSION.RELEASE;
+
+        // find cve of sys
+        MyDBHelper myDBHelper = new MyDBHelper(MainActivity.this, "CveStore.db", null, 2);
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        Cursor cursor = db.query("cves", new String[]{"cve_num"}, "prod_type = ? and product = ? and version = ?",
+                new String[]{"OS", "Android", sysVersion}, null, null, null);
+        if(cursor.moveToFirst()){
+            do{
+                String cve_num = cursor.getString(cursor.getColumnIndex("cve_num"));
+                cves.add(new CVE(cve_num, "Android", sysVersion));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        //find cve of apps
+        for(App app: apps){
+            cursor = db.query("cves", new String[]{"cve_num"}, "prod_type = ? and product = ? and version = ?",
+                    new String[]{"Application", app.getAppLabel(), app.getVersionName()}, null, null, null);
+            if(cursor.moveToFirst()){
+                do{
+                    String cve_num = cursor.getString(cursor.getColumnIndex("cve_num"));
+                    cves.add(new CVE(cve_num, app.getAppLabel(), app.getVersionName()));
+                }while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        db.close();
+
+        return cves;
+    }
+
+    private void showCVE(ArrayList<CVE> cves) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        if(cves.size() == 0){
+            builder.setTitle("啊哦");
+            builder.setMessage("没有找到已公开的潜在漏洞...");
+        }else {
+            builder.setTitle("潜在漏洞");
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (CVE cve: cves){
+                stringBuilder.append(String.format("%s \n\tproduct: %s, version: %s\n", cve.getNum(), cve.getProduct(), cve.getVersion()));
+            }
+
+            builder.setMessage(stringBuilder.toString());
+        }
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                        toast("确定");
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private ArrayList<App> get_data(){
@@ -143,6 +203,5 @@ public class MainActivity extends BasicActivity {
                 }
             }
         }
-
     }
 }
