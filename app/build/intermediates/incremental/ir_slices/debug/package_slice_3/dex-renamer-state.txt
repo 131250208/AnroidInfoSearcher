@@ -1,4 +1,4 @@
-#Sat Apr 21 16:56:08 CST 2018
-base.0=D\:\\AnroidInfoSearcher\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\93
+#Sun Apr 22 00:18:01 CST 2018
+base.0=C\:\\Users\\15850\\Documents\\GitHub\\MyWorkspace\\Android\\MyApplication\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\4
 path.0=classes.dex
 renamed.0=classes.dex

@@ -17,12 +17,6 @@
     android:text="@string/apps_info"/>
 
     <Button
-        android:id="@+id/button_usr_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/usr_info"/>
-
-    <Button
         android:id="@+id/button_cve_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
