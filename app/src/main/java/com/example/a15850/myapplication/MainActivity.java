@@ -52,11 +52,27 @@ public class MainActivity extends BasicActivity {
         });
 
 
-        Button bt_usr_info = (Button)findViewById(R.id.button_cve_info);
-        bt_usr_info.setOnClickListener(new View.OnClickListener() {
+        Button bt_cve_info = (Button)findViewById(R.id.button_cve_info);
+        bt_cve_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showCVE(find_cves());
+            }
+        });
+
+        Button bt_user_info = (Button)findViewById(R.id.button_user_info);
+        bt_user_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserInfoActivity.actionStart(MainActivity.this);
+            }
+        });
+
+        Button bt_monitor_noti_bar = (Button)findViewById(R.id.button_monitor_noti_bar);
+        bt_monitor_noti_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MonitorNotiBarActivity.actionStart(MainActivity.this);
             }
         });
 

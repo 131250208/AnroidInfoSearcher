@@ -1,0 +1,15 @@
+#Internal package file, do not edit.
+#Sat Apr 21 16:56:10 CST 2018
+1.base=D\:\\AnroidInfoSearcher\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\101
+2.path=cve.json
+0.baseType=DIRECTORY
+2.base=D\:\\AnroidInfoSearcher\\app\\build\\intermediates\\assets\\debug
+2.set=ASSET
+1.baseType=DIRECTORY
+count=3
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=D\:\\AnroidInfoSearcher\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\102
+2.baseType=DIRECTORY
+1.path=classes.dex

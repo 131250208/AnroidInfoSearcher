@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\AnroidInfoSearcher\app\src\main\assets"><file name="cve.json" path="D:\AnroidInfoSearcher\app\src\main\assets\cve.json"/></source><source path="D:\AnroidInfoSearcher\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\AnroidInfoSearcher\app\src\debug\assets"/></dataSet></merger>
