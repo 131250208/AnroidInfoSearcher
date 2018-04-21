@@ -22,9 +22,12 @@ import android.os.StatFs;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -41,14 +44,12 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 
-public class SystemInfoActivity extends BasicActivity implements View.OnClickListener {
-    private Button getRAM, getROM, getSD, getLanguage, getNetwork, getIP_MAC, getWifi;
-    private Button getTelephony, getSysVersion, getWifiHot, getHard, getSensor;
-    private Button getProcess;
+public class SystemInfoActivity extends BasicActivity implements AdapterView.OnItemClickListener {
+    private String[] data ={"RAM信息", "ROM信息", "SD信息", "语音信息", "网络信息", "IP-MAC信息", "WIFI信息", "SIM卡及网络信息", "系统版本信息", "WIFI热点信息", "传感器信息", "进程信息"};
+    private ListView myListView;
     private static Context con;
 
-
-    public static void actionStart(Context context) {
+    public static void actionStart(Context context){
         Intent intent = new Intent(context, SystemInfoActivity.class);
         con = context;
         context.startActivity(intent);
@@ -58,89 +59,57 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_info);
-        //获取RAM
-        getRAM = (Button) findViewById(R.id.button_getRAM);
-        getRAM.setOnClickListener(this);
-        //获取ROM
-        getROM = (Button) findViewById(R.id.button_getROM);
-        getROM.setOnClickListener(this);
-        //获取SD
-        getSD = (Button) findViewById(R.id.button_getSD);
-        getSD.setOnClickListener(this);
-        //获取version
-        getLanguage = (Button) findViewById(R.id.button_getLanguage);
-        getLanguage.setOnClickListener(this);
-        //获取网络连接信息
-        getNetwork = (Button) findViewById(R.id.button_getNetwork);
-        getNetwork.setOnClickListener(this);
-        //获取ip_mac信息
-        getIP_MAC = (Button) findViewById(R.id.button_getIP_MAC);
-        getIP_MAC.setOnClickListener(this);
-        //获取wifi信息
-        getWifi = (Button) findViewById(R.id.button_getWIFI);
-        getWifi.setOnClickListener(this);
-        //获取SIM卡及网络信息
-        getTelephony = (Button) findViewById(R.id.button_getTelephony);
-        getTelephony.setOnClickListener(this);
-        //获取系统版本信息
-        getSysVersion = (Button) findViewById(R.id.button_getSysVersion);
-        getSysVersion.setOnClickListener(this);
-        //获取wifi热点信息
-        getWifiHot = (Button) findViewById(R.id.button_getWifiHot);
-        getWifiHot.setOnClickListener(this);
-        //获取传感器信息
-        getSensor = (Button) findViewById(R.id.button_getSensor);
-        getSensor.setOnClickListener(this);
-        //获取进程信息
-        getProcess = (Button) findViewById(R.id.button_getProcess);
-        getProcess.setOnClickListener(this);
 
-
-
+        ArrayAdapter<String> SysAdapter = new ArrayAdapter<String>(SystemInfoActivity.this, android.R.layout.simple_list_item_1, data);
+        myListView = (ListView)findViewById(R.id.sys_list);
+        myListView.setAdapter(SysAdapter);
+        myListView.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_getRAM:
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String text = myListView.getItemAtPosition(position)+"";
+        Log.d("SystemInfoActivity", text);
+        switch (text) {
+            case "RAM信息":
                 getMemoryInfo();
                 break;
-            case R.id.button_getROM:
+            case "ROM信息":
                 getROMInfo();
                 break;
-            case R.id.button_getSD:
+            case "SD信息":
                 getSDInfo();
                 break;
-            case R.id.button_getLanguage:
+            case "语音信息":
                 getLanguageInfo();
                 break;
-            case R.id.button_getNetwork:
+            case "网络信息":
                 getNetworkInfo();
                 break;
-            case R.id.button_getIP_MAC:
+            case "IP-MAC信息":
                 getIPMACInfo();
                 break;
-            case R.id.button_getWIFI:
+            case "WIFI信息":
                 getWifiInfo();
                 break;
-            case R.id.button_getTelephony:
+            case "SIM卡及网络信息":
                 getTelephonyInfo();
                 break;
-            case R.id.button_getSysVersion:
+            case "系统版本信息":
                 getSysVersionInfo();
                 break;
-            case R.id.button_getWifiHot:
+            case "WIFI热点信息":
                 getWifiHotInfo();
                 break;
-            case R.id.button_getSensor:
+            case "传感器信息":
                 getSensorInfo();
                 break;
-            case R.id.button_getProcess:
+            case "进程信息":
                 getProcessInfo();
                 break;
             default:
                 break;
         }
+
     }
 
     //获取内存信息
@@ -551,7 +520,7 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
             String str = "X：" + values[0] + "，Y：" + values[1] + "，Z：" + values[2];
             switch (sensor) {
                 case Sensor.TYPE_ACCELEROMETER:
-                   r="加速度：" + str;
+                    r="加速度：" + str;
                     break;
                 case Sensor.TYPE_MAGNETIC_FIELD:
                     r="磁场：" + str;
@@ -560,7 +529,7 @@ public class SystemInfoActivity extends BasicActivity implements View.OnClickLis
                     r="定位：" + str;
                     break;
                 case Sensor.TYPE_GYROSCOPE:
-                   r="陀螺仪：" + str;
+                    r="陀螺仪：" + str;
                     break;
                 case Sensor.TYPE_LIGHT:
                     r="光线：" + str;
