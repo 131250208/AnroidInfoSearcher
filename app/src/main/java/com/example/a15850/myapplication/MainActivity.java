@@ -43,13 +43,6 @@ public class MainActivity extends BasicActivity {
             }
         });
 
-        Button bt_usr_info = (Button)findViewById(R.id.button_usr_info);
-        bt_usr_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UsrInfoActivity.actionStart(MainActivity.this);
-            }
-        });
 
         Button bt_apps_info = (Button)findViewById(R.id.button_apps_info);
         bt_apps_info.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +61,21 @@ public class MainActivity extends BasicActivity {
             }
         });
 
+        Button bt_user_info = (Button)findViewById(R.id.button_user_info);
+        bt_user_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserInfoActivity.actionStart(MainActivity.this);
+            }
+        });
+
+        Button bt_monitor_noti_bar = (Button)findViewById(R.id.button_monitor_noti_bar);
+        bt_monitor_noti_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MonitorNotiBarActivity.actionStart(MainActivity.this);
+            }
+        });
     }
     private ArrayList<CVE> find_cves(){
         ArrayList<CVE> cves = new ArrayList<CVE>();

@@ -17,15 +17,21 @@
     android:text="@string/apps_info"/>
 
     <Button
-        android:id="@+id/button_usr_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/usr_info"/>
-
-    <Button
         android:id="@+id/button_cve_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cve_info"/>
+
+    <Button
+        android:id="@+id/button_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="用户信息"/>
+
+    <Button
+        android:id="@+id/button_monitor_noti_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="监控状态栏"/>
 
 </LinearLayout>
