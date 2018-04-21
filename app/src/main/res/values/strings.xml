@@ -3,6 +3,7 @@
     <string name="hello_world">Hello wyc</string>
     <string name="system_info">系统信息</string>
     <string name="apps_info">应用信息</string>
+    <string name="usr_info">用户信息</string>
     <string name="cve_info">潜在漏洞</string>
     <string name="ram_info">RAM信息</string>
     <string name="rom_info">ROM信息</string>

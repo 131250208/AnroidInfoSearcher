@@ -43,6 +43,14 @@ public class MainActivity extends BasicActivity {
             }
         });
 
+        Button bt_usr_info = (Button)findViewById(R.id.button_usr_info);
+        bt_usr_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UsrInfoActivity.actionStart(MainActivity.this);
+            }
+        });
+
         Button bt_apps_info = (Button)findViewById(R.id.button_apps_info);
         bt_apps_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +60,8 @@ public class MainActivity extends BasicActivity {
         });
 
 
-        Button bt_usr_info = (Button)findViewById(R.id.button_cve_info);
-        bt_usr_info.setOnClickListener(new View.OnClickListener() {
+        Button bt_cve_info = (Button)findViewById(R.id.button_cve_info);
+        bt_cve_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showCVE(find_cves());

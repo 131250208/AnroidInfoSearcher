@@ -11,10 +11,16 @@
         android:text="@string/system_info"/>
 
     <Button
-        android:id="@+id/button_apps_info"
+    android:id="@+id/button_apps_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/apps_info"/>
+
+    <Button
+        android:id="@+id/button_usr_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/apps_info"/>
+        android:text="@string/usr_info"/>
 
     <Button
         android:id="@+id/button_cve_info"

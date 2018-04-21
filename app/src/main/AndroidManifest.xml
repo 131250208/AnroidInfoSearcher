@@ -3,14 +3,14 @@
     package="com.example.a15850.myapplication">
 
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".DataContainer"
@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AppsInfoActivity" />
-        <activity android:name=".SystemInfoActivity"></activity>
+        <activity android:name=".SystemInfoActivity" />
+        <activity android:name=".UsrInfoActivity"></activity>
     </application>
 
 </manifest>
